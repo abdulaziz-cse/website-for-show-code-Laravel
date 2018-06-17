@@ -1,4 +1,4 @@
-@extends('layouts.defulat')
+@extends('layouts.app')
 @section('start')
 
 
