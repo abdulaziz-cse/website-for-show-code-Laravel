@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
     
@@ -12,10 +13,13 @@ class PostController extends Controller
      *
      * @return void
      */
+
+     
     public function __construct()
     {
         $this->middleware('auth',[ 'except'=>'index','show']);
     }
+
 
        /**
      * Display a listing of the resource.
@@ -29,8 +33,9 @@ class PostController extends Controller
      */
     public function index()
     {
+       
 
-        $post = Post::orderBy('created_at','ASC')->paginate(3);
+        $post = Post::orderBy('created_at','DESC')->paginate(10);
 
         return view('posts.index', compact('post'));
 
@@ -48,7 +53,6 @@ class PostController extends Controller
         return view('posts.create');
 
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -57,23 +61,26 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
 
             'name'=>'required',
             'body'=>'required',
-            'email'=>'required'
+            'email'=>'required',
               ]);
+
               $user = Auth::user();
               $post = new Post();
               $post->name = $request->input('name');
               $post->body = $request->input('body');    
               $post->email = $request->input('email'); 
+              $post->price = $request->input('price'); 
+              $post->tag = $request->input('tag'); 
+              $post->more = $request->input('more'); 
               $post->user_id = $user->id;
 
               $post->save();
 
-              return redirect('/home')->with('success' , 'تم رفع البلاغ بنجاح ');
+              return redirect('/home')->with('success' , 'New code success');
 
     }
 
@@ -126,7 +133,7 @@ class PostController extends Controller
               $post->email = $request->input('email');    
               $post->save();
 
-              return redirect('/posts')->with('success' , 'تم تعديل البلاغ بنجاح ');
+              return redirect('posts')->with('success' , 'تم تعديل البلاغ بنجاح ');
     }
 
     /**
