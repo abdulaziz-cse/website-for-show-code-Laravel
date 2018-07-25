@@ -65,22 +65,17 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'name'=>'required',
             'body'=>'required',
             'email'=>'required',
             'post_image'=>'image|nullable|max:1024',
-
               ]);
 
-
        if($request->hasFile('post_image')){  
-
     $filenameWithExtention = $request->file('post_image')->getClientOriginalName();
     $fileName = pathinfo($filenameWithExtention,PATHINFO_FILENAME);
     $extension = $request->file('post_image')->getClientOriginalExtension();
     $fileNameStore = $fileName .'_'.time().'.'.$extension;
-
     $path = $request->file('post_image')->move(base_path() . '/public/images/', $fileNameStore);
   
  
@@ -88,9 +83,6 @@ class PostController extends Controller
         }else{
                 $fileNameStore = 'noImage.jpg';
               } 
-
-        
-              $user = Auth::user();
               $post = new Post();
               $post->name = $request->input('name');
               $post->body = $request->input('body');    
@@ -98,9 +90,8 @@ class PostController extends Controller
               $post->price = $request->input('price'); 
               $post->tag = $request->input('tag'); 
               $post->more = $request->input('more'); 
-              $post->user_id = $user->id;
+              $post->user_id = auth()->user()->id;
               $post->post_image = $fileNameStore;
-
               $post->save();
 
               return redirect('/home')->with('success' , 'New code success');
@@ -155,9 +146,7 @@ class PostController extends Controller
             $fileName = pathinfo($filenameWithExtention,PATHINFO_FILENAME);
             $extension = $request->file('post_image')->getClientOriginalExtension();
             $fileNameStore = $fileName .'_'.time().'.'.$extension;
-          
             $path = $request->file('post_image')->move(base_path() . '/public/images/', $fileNameStore);
-            // $path = $request->file('post_image')->storeAs('public/post_image',$fileNameStore);
         } 
         $post =   Post::find($id);
         $post->name = $request->input('name');

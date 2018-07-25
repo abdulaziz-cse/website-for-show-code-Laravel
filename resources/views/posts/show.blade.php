@@ -15,6 +15,8 @@
       <div class="card mb-4"> 
         <div class="card-body">
           <h2 class="card-title">Description of the code </h2>   
+
+        {{  $post->body}}
          Posted on {{ $post->created_at->format('M j, Y') }} By <a>{{$post->user->name}}</a>
 
         

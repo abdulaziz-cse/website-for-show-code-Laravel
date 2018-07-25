@@ -20,6 +20,7 @@ Route::resource('posts', 'PostController');
 Auth::routes();
 
 Route::resource('homes', 'ShowProfilController');
+Route::get('/', 'PostController@index');
 
 Route::get('home', 'HomeController@index')->name('home');
 
