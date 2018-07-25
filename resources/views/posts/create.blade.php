@@ -2,7 +2,6 @@
 @extends('layouts.app')
 @section('start')
 
-
 <div class="container-fluid col-sm-8 mx-auto" style="padding: 100px;">
 <div class="container">
     <div class="row justify-content-center padding">
@@ -13,10 +12,10 @@
 
                 <div class="card-body padding">
 
-                  {!! Form::open(['action'=>'PostController@store', 'method'=>'POST' ]) !!}
+                  {!! Form::open(['action'=>'PostController@store', 'method'=>'POST','enctype'=>'multipart/form-data' ]) !!}
 
                         <div class="form-group row">
-                       <label>{!! Form::label('name project') !!}</label>
+                       <label> {!! Form::label('name project') !!}</label>
                     {!! Form::text('name' ,'',['placeholder'=> 'CMS of blog','class'=>'form-control']) !!}
                      </div>
 
@@ -27,7 +26,7 @@
 
                    <div class="form-group row">
                         <label>{!! Form::label('Describe') !!}</label>
-                      {!! Form::textarea('body' ,'',['placeholder'=> 'The Report ','class'=>'form-control ckeditor']) !!}
+                      {!! Form::textarea('body' ,'',['placeholder'=> 'The Report ','class'=>'form-control']) !!}
                      </div>
                  
 
@@ -37,8 +36,12 @@
                   {!! Form::text('price' ,'',['placeholder'=> ' 400$ ','class'=>'form-control']) !!}
                   </div>
                  </div>
+                 <div class="form-group row">
 
 
+                {!! Form::file('post_image') !!}
+                      </div>   
+                   
                  <div class="form-group row">
                     <label class="col-md-4 col-form-label text-md-right">{!! Form::label('Type of code ') !!}</label>
                     <div class="col-md-6">

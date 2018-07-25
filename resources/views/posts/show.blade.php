@@ -6,59 +6,38 @@
 
   <div class="row">
 
-    <!-- Blog Entries Column -->
     <div class="col-md-8">
 
-      <h1 class="my-4"> {{ $post->name }} </h1>
+      <h1 class="my-5"> {{ $post->name }}</h1>
+      <a class="pull-right" href="/posts" class="btn btn-warning">Back</a>
 
       <!-- Blog Post -->
-      <div class="card mb-4">
-        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+      <div class="card mb-4"> 
         <div class="card-body">
-          <h2 class="card-title">Description of the code</h2>
-          <p class="card-text">{{ $post->body }}</p>
-          <div class="card-body download-links">
-              <ul class="list-inline m-0">
-              <li class="list-inline-item">
-              <a href="" class="btn btn-secondary" target="_blank">
-              <i class="fas fa-eye"></i>
-              Live Preview
-              </a>
-              </li>
-              <li class="list-inline-item">
-              <a href="" class="btn btn-secondary" type="submit" id="download">
-              <i class="fas fa-download"></i>
-              Download
-              </a>
-              </li>
-              </ul>
-              </div>       
-             </div>
+          <h2 class="card-title">Description of the code </h2>   
+         Posted on {{ $post->created_at->format('M j, Y') }} By <a>{{$post->user->name}}</a>
 
-         
-        <div class="card-footer text-muted">
-          Posted on {{ $post->created_at }}  by  <a href="#">{{ $post->user->name  }}</a>
-        </div>
+        
+        <h1 class="my-4"> Photo</h1>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{{ URL::to('/') }}/images/{{$post->post_image}}" class="d-block w-100" alt="{{$post->post_image}}"> 
+              </div>
+              </div>
+              <br>
+              <h1 class="my-4"> More Data </h1>
+              <br>
+              
+       
         
         </div>
+      
       </div>
+      
     </div>
     
 
   </div>
 
-        
-
-  @if(!Auth::guest() && (Auth::user()->id == $post->user_id ))
-  <div class="row container">
-    {!! Form::open(['action'=>[ 'PostController@destroy', $post->id ], 'method'=>'POST' ]) !!}
-
-    {{ Form::hidden('_method','DELETE') }}
-    <button type="button" class="btn btn-danger">Deleate in DB</button>
-    {{ !! Form::close() }}
-
-   <a href="/posts/{{ $post->id }}/edit"><button  type="submit" class="btn btn-secondary">   Edite in DB </button></a>
-    </div>
-    @endif
+      
 @endsection
-

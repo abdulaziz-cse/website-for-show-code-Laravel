@@ -30,4 +30,13 @@ class HomeController extends Controller
         $user = User::find($userId);
         $posts = $user->posts;
         return view('home', compact('posts'));    }
+
+
+public function test()
+{
+    
+    return view('test', compact('posts'));    }
+
+
 }
+

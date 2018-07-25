@@ -2,60 +2,48 @@
 
 @extends('layouts.app')
 @section('start')
+     
 
-<div class="container">
-<div class="row"> 
+<div class="col mx-auto" style="padding: 80px;">
 
-<div class="col mx-auto" style="padding: 60px;">
-<h3>Developers codes</h3>
+  <div class="content">
+
+ <div class="container">
+    <h1 class="display-5">Developers codes</h1>
+
+    <div class="row">
+  
+
 @foreach($post as $posts)
-<div class="card mb-4">
-<div class="card-group">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ $posts->name }}</h5>
-        <span class="card-text"> {{ $posts->body }}</span>
-        <p class="card-text"><small class="text-muted">{{ $posts->created_at }}</small></p>
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">More Details </button>
-        <button type="button"   name="price" class="btn btn-default">{{ $posts->price }}
-            <i class="fas fa-dollar-sign"></i>
-        </button>
-        <button type="button" class="btn btn-warning">{{ $posts->tag }}
-            <i class="fas fa-code"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="col-sm-6" style="padding: 10px;">
+    <div class="card"> 
+            <div class="card-body" style="display:inline-block;">
+              <h4 class="card-title">{{ $posts->name }}</h4>
+              <h6 class="card-subtitle mb-2 text-muted"> By {{ $posts->user->name}}</h6>
+                 <p class="card-text">
+                  {{ str_limit(strip_tags($posts->body), 50) }}
+                  @if (strlen(strip_tags($posts->body)) > 50)
+                  <a  href="/posts/{{$posts->id}}"> More .. </a>
+                    @endif
+                 </p>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ $posts->name }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h2> Deccripe the coode </h2>
-        <br>
-        {{ $posts->body }}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+              <button type="button" name="price" class="btn btn-default"> {{ $posts->price }}   <i class="fas fa-dollar-sign"></i> </button>
 
+              <button type="button" class="btn btn-warning"> {{ $posts->tag }} <i class="fas fa-code"></i> </button>
+
+            </div>
+            
+          </div>
+        </div>
+    
 @endforeach
+
 {{ $post->links() }}
 </div>
 </div>
 </div>
+</div>
 @endsection
+
 
 
