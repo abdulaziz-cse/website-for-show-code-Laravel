@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Requset;
 
+use Illuminate\Http\Request;
 class PostController extends Controller
 {
     
@@ -14,14 +15,7 @@ class PostController extends Controller
      * Create a new controller instance.
      *
      * @return void
-     */
-
-     
-    public function __construct()
-    {
-        $this->middleware('auth',[ 'except'=>'index','show']);
-    }
-
+     */    
 
        /**
      * Display a listing of the resource.
@@ -185,5 +179,14 @@ class PostController extends Controller
                 $post->delete() ;   
             
                 return redirect('/posts')->with('success', 'Done successfully');
+    }
+
+    //
+
+
+    public function payWithPaypal(Requset $requset){
+        
+        return "JSJSJJS";
+
     }
 }

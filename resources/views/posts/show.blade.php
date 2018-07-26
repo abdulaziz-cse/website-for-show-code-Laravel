@@ -30,7 +30,16 @@
               <h1 class="my-4"> More Data </h1>
               <br>
               
-       
+              <div class="action">
+              <form action="{{ route('pay') }}" method="POST">
+                {{ csrf_field() }}
+
+                <input type="hidden" name="price" value="{{ $post->price }}" >{{ $post->price }}
+
+                <input type="hidden" name="name" value="{{ $post->name }}" >{{ $post->name }}
+                <button class="btn btn-success" type="submit" > Bay Now </button>
+              </form>
+            </div>
         
         </div>
       
@@ -43,3 +52,5 @@
 
       
 @endsection
+
+

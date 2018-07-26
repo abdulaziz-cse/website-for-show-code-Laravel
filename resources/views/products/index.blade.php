@@ -1,10 +1,15 @@
+@extends('layouts.app')
+@section('strat')
 
 
-<form action="{{ Route('pay') }}" method="POST">
- {{ csrf_field() }}
+<div class="action">
 
-<input type="hideen" name="price"   value="{{ $items['price'}} " />
-<input type="hideen" name="name"   value="{{ $items['name' }} " />
+    @foreach($posts as $post)
+    <form action="{{ Route('pay') }}" method="POST">
+    {{ csrf_field() }}
+    <input type="hidden" name="price" value="{{ $post->price }}" />
 
-</form>
-
+        </form>
+        </div>
+        @endforeach
+@endsection

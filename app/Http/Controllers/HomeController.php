@@ -29,7 +29,7 @@ class HomeController extends Controller
         $userId = Auth::id();
         $user = User::find($userId);
         $posts = $user->posts;
-        return view('home', compact('posts'));    }
+        return view('posts.home', compact('posts'));    }
 
 
 public function test()

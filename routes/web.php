@@ -16,10 +16,13 @@
 
 Route::resource('posts', 'PostController');
 
-
 Auth::routes();
 
-Route::resource('homes', 'ShowProfilController');
+Route::post('pay', 'PaymentController@payWithPaypal')->name('pay');
+
+Route::get('cancel', 'PaymentController@cancel')->name('cancel');
+Route::get('paynow', 'PaymentController@paynow')->name('paynow');
+
 Route::get('/', 'PostController@index');
 
 Route::get('home', 'HomeController@index')->name('home');
@@ -29,4 +32,3 @@ Route::get('/test', 'HomeController@test')->name('test');
 Auth::routes();
 
 
-Route::post('pay', 'PayymentController@payWithPaypal')->name('pay');

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ShowProfilController extends Controller
 {
     
-    public $items = [
+    public $_items = [
 
         1=> [
             'id' => 1,
@@ -34,7 +34,7 @@ class ShowProfilController extends Controller
 
 
     public function index(){
-        return view('products.index', ['items' => $this->items]);
+        return view('products.index', ['items' => $this->_items]);
 
     }
 

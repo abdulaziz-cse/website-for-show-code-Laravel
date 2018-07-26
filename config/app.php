@@ -148,7 +148,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
@@ -176,7 +175,7 @@ return [
     */
 
     'aliases' => [
-
+        'Paypal' => 'Netshell\Paypal\Facades\Paypal',
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
