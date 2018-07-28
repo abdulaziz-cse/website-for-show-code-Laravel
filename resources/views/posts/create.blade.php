@@ -4,8 +4,16 @@
 
 <div class="container-fluid col-sm-8 mx-auto" style="padding: 100px;">
 <div class="container">
+    
     <div class="row justify-content-center padding">
+        
         <div class="col-md-8 padding">
+                <div class="d-flex align-items-end flex-column">
+                        <div class="p-2">
+                            <a  class="btn btn-outline-info" href="/posts" >Back </a>
+                        </div>
+                      </div>
+              
             <div class="card">
                 <div class="card-header"> <i class="fas fa-plus"></i> Add New Code  </div>
 
@@ -26,14 +34,13 @@
 
                    <div class="form-group row">
                         <label>{!! Form::label('Describe') !!}</label>
-                      {!! Form::textarea('body' ,'',['placeholder'=> 'The Report ','class'=>'form-control']) !!}
-                     </div>
+                        {{Form::textarea('body','',['class'=>'form-control ckeditor' ,'id'=>'ckeditor']) }}
+                    </div>
                  
-
                  <div class="form-group row">
                     <label class="col-md-4 col-form-label text-md-right">{!! Form::label('Price of project') !!}</label>
                     <div class="col-md-6">
-                  {!! Form::text('price' ,'',['placeholder'=> ' 400$ ','class'=>'form-control']) !!}
+                  {!! Form::text('price' ,'',['placeholder'=> ' 400$ ','class'=>'form-control ckeditor']) !!}
                   </div>
                  </div>
                  <div class="form-group row">

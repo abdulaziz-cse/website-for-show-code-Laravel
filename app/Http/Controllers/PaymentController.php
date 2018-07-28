@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 
+use PayPal\Api\PaymentExecution;
 use PayPal\Api\Amount; 
 use PayPal\Api\Details; 
 use PayPal\Api\Item; 
@@ -70,6 +71,7 @@ class PaymentController extends Controller
            ->setTotal($post->price);
 
 
+
            // transaction 
             $transaction = new Transaction();
             $transaction->setAmount($amount) 
@@ -77,8 +79,8 @@ class PaymentController extends Controller
             ->setDescription("Payment OF CODE ");
 
             $redirectUrls = new RedirectUrls();
-            $redirectUrls->setReturnUrl('https://task-deom-fablab.herokuapp.com/paynow')
-            ->setCancelUrl('https://task-deom-fablab.herokuapp.com/cancel');
+            $redirectUrls->setReturnUrl('http://task-deom-fablab.herokuapp.com/paynow')
+            ->setCancelUrl('http://task-deom-fablab.herokuapp.com/cancel');
 
             // paymant
             $payment = new Payment(); 
@@ -96,16 +98,20 @@ class PaymentController extends Controller
                 //
                 $paymentLink = $payment->getApprovalLink();
 
-                return redirect($paymentLink);
+                 return redirect($paymentLink);
 
             }
 
-            public function  paynow(){
-                return " cancelcancelcancelcancel";
+            public function  paynow(Request $request){
+
+                if(empty($request->input('PayerID')) || empty($request->input('token'))){
+                    die('Paymant Filet');
+                }
 
             }
 
             public function  cancel(){
-                return " cancelcancelcancelcancel";
+                return redirect('/posts')->with('success', 'Done successfully');
+
             }
 }

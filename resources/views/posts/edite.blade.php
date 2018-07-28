@@ -32,7 +32,7 @@
                    <div class="form-group row">
                       <label class="col-md-4 col-form-label text-md-right">{!! Form::label('Body') !!}</label>
                       <div class="col-md-6">
-                    {!! Form::textarea('body' ,$post->body,['placeholder'=> 'Enter the ','class'=>'form-control']) !!}
+                    {!! Form::textarea('body' ,$post->body,['placeholder'=> 'Enter the ','class'=>'form-control', 'id'=>'article-ckeditor']) !!}
                     </div>
                    </div>
 

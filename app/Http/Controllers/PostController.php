@@ -31,10 +31,11 @@ class PostController extends Controller
     {
        
 
-        $post = Post::orderBy('created_at','desc')->paginate(10);
+        $post = Post::orderBy('created_at','desc')->paginate(4);
 
         return view('posts.index', compact('post'));
 
+      
 
 
     }
@@ -98,13 +99,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         $post = Post::find($id);
+        $post->tag = $request->input('tag');
+         
         return view('posts.show', compact('post'));
 
         
-    }
+    
+}
 
     /**
      * Show the form for editing the specified resource.
@@ -184,9 +188,5 @@ class PostController extends Controller
     //
 
 
-    public function payWithPaypal(Requset $requset){
-        
-        return "JSJSJJS";
-
-    }
+ 
 }

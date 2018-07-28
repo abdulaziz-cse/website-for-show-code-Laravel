@@ -23,16 +23,22 @@ return [
         'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => env('SES_REGION', 'us-east-1'),
+        'mode' =>env ('sandbox')
     ],
 
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
+        'mode' =>env ('sandbox')
+
     ],
 
     'stripe' => [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+        'mode' =>env ('sandbox')
+
+        
     ],
 
 ];
