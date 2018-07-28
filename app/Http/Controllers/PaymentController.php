@@ -79,8 +79,8 @@ class PaymentController extends Controller
             ->setDescription("Payment OF CODE ");
 
             $redirectUrls = new RedirectUrls();
-            $redirectUrls->setReturnUrl('http://task-deom-fablab.herokuapp.com/paynow')
-            ->setCancelUrl('http://task-deom-fablab.herokuapp.com/cancel');
+            $redirectUrls->setReturnUrl('https://task-deom-fablab.herokuapp.com/paynow')
+            ->setCancelUrl('https://task-deom-fablab.herokuapp.com/cancel');
 
             // paymant
             $payment = new Payment(); 

@@ -7,7 +7,6 @@
 
     <div class="col-md-12">
       <!-- Blog Post -->
-
       <div class="d-flex align-items-end flex-column">
           <div class="p-2">
               <a  class="btn btn-outline-info" href="/posts" >Back </a>
