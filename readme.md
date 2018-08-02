@@ -14,7 +14,7 @@ and use PayPal
 
 ## Photo 
 
-<p align="center"><img src="https://photos.google.com/search/_tra_/photo/AF1QipNx0XXSLUKB8NA9sWiZri7PkvEA0nPRO25k7MDi"></p>
+<p align="center"><img src="https://i.imgur.com/Asuk5mR.png"></p>
 
 
 
