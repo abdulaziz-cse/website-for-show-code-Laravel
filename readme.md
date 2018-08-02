@@ -8,8 +8,7 @@
 </p>
 
 ## About Project
-This project Simple for Display any code you want Subject to sale .. simple Front-End And make Back-End PHP-Laravel.
-and use PayPal 
+A website simple that displays codes for the purpose of purchasing the code, which is a simple and basic site for anyone who wants to develop and provides payment through PayPal
 
 
 ## Photo 
